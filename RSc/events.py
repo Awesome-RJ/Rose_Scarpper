@@ -23,7 +23,7 @@ def load_module(shortname):
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        print("Successfully imported " + shortname)
+        print(f"Successfully imported {shortname}")
     else:
         import importlib
         import RSc.events
@@ -35,8 +35,8 @@ def load_module(shortname):
         mod.tbot = tbot
         mod.logger = logging.getLogger(shortname)
         spec.loader.exec_module(mod)
-        sys.modules["RSc.modules." + shortname] = mod
-        print("Successfully imported " + shortname)
+        sys.modules[f"RSc.modules.{shortname}"] = mod
+        print(f"Successfully imported {shortname}")
 
 
 path = "RSc/modules/*.py"
